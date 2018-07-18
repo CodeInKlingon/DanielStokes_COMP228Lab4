@@ -1,7 +1,11 @@
+package Exercise2;
+
+import javafx.scene.layout.Pane;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Ball extends JPanel implements GameObject {
+public class Ball extends Pane implements GameObject {
 
     int width = 26;
     double speed;
@@ -23,8 +27,9 @@ public class Ball extends JPanel implements GameObject {
 
         xPosition = (1200 / 2) - (width/2);
         yPosition = (720 / 2) - (width/2) ;
-        setBounds(xPosition, yPosition,width,width);
-        setBackground(Color.white);
+        setPrefSize(width,width);
+        relocate(xPosition, yPosition);
+        setStyle("-fx-background-color: white");
     }
 
     public void Reset(){
@@ -33,7 +38,7 @@ public class Ball extends JPanel implements GameObject {
         yMovement = 0;
         xPosition = (1200 / 2) - (width/2);
         yPosition = (720 / 2) - (width/2) ;
-        setBounds(xPosition, yPosition,width,width);
+        resizeRelocate(xPosition, yPosition,width,width);
     }
 
     @Override
@@ -131,7 +136,7 @@ public class Ball extends JPanel implements GameObject {
 
             xPosition = xPosition + xMovement;
             yPosition = yPosition + yMovement;
-            setBounds(xPosition, yPosition,width,width);
+            relocate(xPosition, yPosition);
         }
 
 

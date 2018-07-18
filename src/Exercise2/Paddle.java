@@ -1,7 +1,11 @@
+package Exercise2;
+
+import javafx.scene.layout.Pane;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Paddle extends JPanel implements GameObject {
+public class Paddle extends Pane implements GameObject {
 
     int moveSpeed = 3;
     PlayerPaddle player;
@@ -18,8 +22,10 @@ public class Paddle extends JPanel implements GameObject {
                 xPosition = 40;
                 break;
         }
-        setBounds(xPosition - 40, yPosition,40,100);
-        setBackground(Color.white);
+
+        setPrefSize(40,100);
+        relocate(xPosition - 40, yPosition);
+        setStyle("-fx-background-color: white");
         this.player = player;
     }
      @Override
@@ -57,7 +63,7 @@ public class Paddle extends JPanel implements GameObject {
          }
 
 
-        setBounds(xPosition, yPosition,40,100);
+         relocate(xPosition, yPosition);
 
      }
 

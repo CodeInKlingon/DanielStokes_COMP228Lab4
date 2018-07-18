@@ -1,6 +1,6 @@
-import java.awt.event.*;
+package Exercise1;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
+import java.awt.event.*;
 
 
 public class InputManager implements KeyListener {

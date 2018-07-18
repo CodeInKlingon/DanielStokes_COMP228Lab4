@@ -1,8 +1,7 @@
+package Exercise1;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.security.UnresolvedPermission;
 
 public class Game extends JFrame {
 
