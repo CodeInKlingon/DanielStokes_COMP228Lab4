@@ -33,6 +33,7 @@ public class Game extends Scene {
         super(root, 1200, 720, Color.BLACK);
         playing = true;
         this.root = root;
+
         //create score
         p1ScoreLabel = new Label("0");
         p1ScoreLabel.resizeRelocate(450,0, 150,150);
@@ -46,7 +47,7 @@ public class Game extends Scene {
         p2ScoreLabel.setTextFill(Color.web("#FFFFFF"));
         p2ScoreLabel.setFont(new Font(70));
         p2ScoreLabel.setTextAlignment(TextAlignment.RIGHT);
-//        p2ScoreLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+
 
 
         //create player win label
@@ -54,8 +55,7 @@ public class Game extends Scene {
         winnerLabel.resizeRelocate(250,100, 1200,720);
         winnerLabel.setTextFill(Color.web("#FFFFFF"));
         winnerLabel.setFont(new Font(70));
-//        winnerLabel.setFont(new Font(winnerLabel.getFont().getName(),winnerLabel.getFont().getStyle(), 70));
-//        winnerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         winnerLabel.setVisible(false);
 
 
@@ -71,7 +71,6 @@ public class Game extends Scene {
         //create background
         Pane bg = new Pane();
         bg.setPrefSize(1200,720);
-//        bg.resizeRelocate(0,0,1200,720);
         bg.setStyle("-fx-background-color: #000000");
 
 
@@ -92,6 +91,9 @@ public class Game extends Scene {
 
         InputManager im = new InputManager();
 
+
+
+        //input manger staic boolean set here
         setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -119,6 +121,8 @@ public class Game extends Scene {
         });
     }
 
+
+    //update function to calll update on all other objects
     public void Update() {
 
         ball.Update();
@@ -127,6 +131,8 @@ public class Game extends Scene {
 
     }
 
+
+    //score logic
     public void AddScore(PlayerPaddle player){
 
         switch (player){
@@ -150,6 +156,8 @@ public class Game extends Scene {
 
     }
 
+
+    //reset score
     public void EndGame(PlayerPaddle winner){
 
         p1Score = 0;

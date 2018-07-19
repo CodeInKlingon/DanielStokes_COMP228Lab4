@@ -1,41 +1,53 @@
 package Exercise2;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class MainMenu extends JFrame {
-
-    private final JLabel gameLabel;
-    private final JButton btnPlay;
-    private final JButton btnExit;
-
-    public MainMenu(){
-        super("Pong - Main Menu");
-        setLayout(new GridLayout(3,1));
-
-        gameLabel = new JLabel("Pong");
-        gameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        gameLabel.setToolTipText("Pong Java Game");
-        add(gameLabel);
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 
-        btnPlay = new JButton("Play");
-        btnPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                StartGame();
+public class MainMenu extends Scene {
+
+    private final Label gameLabel;
+    private final Button btnPlay;
+    private final Button btnExit;
+    VBox root;
+
+    Driver driver;
+
+    public MainMenu(VBox root, Driver driver, Stage stage){
+        super(root, 200, 200);
+        this.root = root;
+        this.driver = driver;
+
+        gameLabel = new Label("Pong");
+        gameLabel.setTextAlignment(TextAlignment.CENTER);
+        root.getChildren().add(gameLabel);
+
+
+        btnPlay = new Button("Play");
+        btnPlay.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                driver.play(stage);
             }
-        } );
-        add(btnPlay);
+        });
+        root.getChildren(). add(btnPlay);
 
-        btnExit = new JButton("Exit");
-        btnPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ExitGame();
+        btnExit = new Button("Exit");
+        btnExit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                stage.close();
             }
-        } );
-        add(btnExit);
+        });
+        root.getChildren(). add(btnExit);
 
     }
 

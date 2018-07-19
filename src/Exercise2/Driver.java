@@ -2,7 +2,11 @@ package Exercise2;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -15,48 +19,31 @@ public class Driver extends Application {
 
         launch(args);
 
-//
-//        MainMenu menu = new MainMenu();
-//        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        menu.setSize(260, 180);
-//        menu.setVisible(true);
+    }
 
 
+    //show main menu
+    @Override
+    public void start(Stage primaryStage) {
 
-
-
-//        while(true){
-//
-//            if(start){
-//
-//                game.show();
-//                menu.setVisible(false);
-//                break;
-//            }
-//
-//            Thread.sleep(16);
-//        }
-//
-//        while(start){
-//
-//            //update on all objects
-//            game.Update();
-//
-//            Thread.sleep(16);
-//
-//        }
+        VBox sp = new VBox();
+        sp.setAlignment(Pos.CENTER);
+        MainMenu menu = new MainMenu(sp,this,primaryStage);
+        primaryStage.setScene(menu);
+        primaryStage.show();
 
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+
+    //change scene to game
+    public void play(Stage primaryStage){
         Pane root = new Pane();
         game = new Game(root);
         primaryStage.setScene(game);
-        primaryStage.show();
-
         start = true;
 
+
+        //update game scene every frame
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -64,6 +51,5 @@ public class Driver extends Application {
             }
         };
         timer.start();
-
     }
 }
